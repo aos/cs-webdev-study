@@ -1,0 +1,57 @@
+body {
+    background: url("https://s9.postimg.org/y91a92zbj/background_world_map.gif");
+    background-size: contain;
+    background-color: white;
+}
+
+#image {
+    width: auto;
+    height: auto;
+    max-width: 200px;
+    max-height: 200px;
+    margin: auto;
+}
+
+.search-box {
+    text-align: center;
+    margin: 50px auto 40px;
+    background-color: rgba(221, 226, 255, 0.5);
+    width: 50%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#searchField {
+    margin-top: 20px;
+    font-size: 15px;
+    border: 2px solid blue;
+}
+
+.button {
+    font-size: 15px;
+    border: 1px solid blue;
+
+}
+
+h1, h2 {
+    text-align: center;
+    margin: auto;
+    padding-bottom: 10px;
+}
+
+#searchContainer {
+    background-color: #F4F4F4;
+    border: 2px solid gray;
+    width: 60%;
+    margin: 5px auto 5px;
+    padding: 5px;
+}
+
+#searchContainer:hover {
+    background-color: #D3D3D3;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}

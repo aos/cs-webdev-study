@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Wikipedia Viewer</title>
+    <meta name="description" content="Wikipedia Viewer">
+    <meta name="author" content="Aos">
+
+    <link rel="stylesheet" href="wikistyle.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="scripts.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Search box -->
+        <div class="search-box">
+            <h1>Wikipedia Viewer</h1>
+            <div id="image">
+                <img id="image" src="https://s23.postimg.org/deku840bf/wikipedia.png"></img>
+            </div>
+
+            <input type="text" size=30 id="searchField" placeholder="Search Wikipedia"></input>
+            <!-- Search field here -->
+            <button class="button" id="submitButton">Search</button>
+
+            <!-- Feel good button -->
+            <button class="button" id="lucky"><a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">I'm feeling lucky!</a></button>
+
+        </div>
+        <!-- Search results here -->
+        <div class="results-container">
+            <p id="results"></p>
+        </div>
+    </div>
+</body>
+
+</html>
