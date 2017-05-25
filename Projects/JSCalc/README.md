@@ -1,6 +1,6 @@
 # JSCalc
-A calculator made entirely using Javascript
+A calculator made entirely using JavaScript
 
 Built using jQuery
 
-Vanilla JS version located in other branch.
+[Click here](royal-control.surge.sh) to test it out!
