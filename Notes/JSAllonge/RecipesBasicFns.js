@@ -179,3 +179,74 @@ const leftGather = (outputArrayLength) => {
 const [butLast, last] = leftGather(2)(['why', 'hello', 'there', 'little', 'droid']);
 butLast; // ['why', 'hello', 'there', 'little']
 last; // 'droid'
+
+/**
+ * B Combinator => compose
+*/
+const compose = (a, b) => 
+  (c) => a(b(c));
+
+// Given:
+const addOne = (number) => number + 1;
+const doubleOf = (number) => number * 2;
+// Instead of:
+const doubleOfAddOne = (number) => doubleOf(addOne(number));
+// Composed:
+const doubleOfAddOneComp = compose(doubleOf, addOne);
+
+// Variadic compose and recursion
+// If `compose3` was implemented:
+const compose3 = (a, b, c) => (d) => a(b(c(d)));
+// Or:
+const compose3Again = (a, b, c) => compose(a(compose(b, c)));
+
+// Writing a recursive variadic compose:
+// Start with smallest (degenerate) case:
+const compose1 = (a) => a;
+
+// Then:
+const composeOne = (a, ...rest) => "to be determined"
+// Test for degenerate case:
+const composeDegen = (a, ...rest) =>
+  rest.length === 0
+    ? a
+    : "to be determined"
+
+// Now to combine function with `...rest`
+
+// Consider `compose(a, b)`... In this case `compose(b) is the degenerate case => just `b`
+// Given `compose(a, b)` is `(c) => a(b(c))`
+// Substitute `compose(b)` for `b`
+compose(a, compose(b)) === ( (c) => a(compose(b)(c)) )
+
+// Now substitute `...rest` for `b`
+compose(a, ...rest) === ( (c) => a(compose(...rest)(c)) )
+
+// Final solution:
+const composeFinal = (a, ...rest) =>
+  rest.length === 0
+    ? a
+    : (c) => a(compose(...rest)(c));
+
+// Implementing use `.reduce`
+constComposeReduce = (...fns) =>
+  (value) =>
+    fns.reverse().reduce((acc, fn) => fn(acc), value);
+
+// Using with method decorators:
+const setter = compose(fluent, maybe);
+SomeClass.prototype.setUser = setter(function(user) {
+  this.user = user;
+});
+SomeClass.prototype.setPrivileges = setter(function(privileges) {
+  this.privileges = privileges;
+});
+
+// `setter` adds both the behavior or `fluent` and `maybe` to each method it decorates
+
+// `pipeline` => values flows through `fn a` then `fn b`
+const pipeline = (...fns) =>
+  (value) =>
+    fns.reduce((acc, fn) => fn(acc), value);
+
+const setterPipe = pipeline(addOne, double);
