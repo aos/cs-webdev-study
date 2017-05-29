@@ -7,55 +7,55 @@ describe('Isogram Test Suite', function () {
     expect(word.isIsogram()).toEqual(true);
   });
 
-  xit('eleven', function () {
+  it('eleven', function () {
     var word = new Isogram('eleven');
 
     expect(word.isIsogram()).toEqual(false);
   });
 
-  xit('subdermatoglyphic', function () {
+  it('subdermatoglyphic', function () {
     var word = new Isogram('subdermatoglyphic');
 
     expect(word.isIsogram()).toEqual(true);
   });
 
-  xit('Alphabet', function () {
+  it('Alphabet', function () {
     var word = new Isogram('Alphabet');
 
     expect(word.isIsogram()).toEqual(false);
   });
 
-  xit('thumbscrew-japingly', function () {
+  it('thumbscrew-japingly', function () {
     var word = new Isogram('thumbscrew-japingly');
 
     expect(word.isIsogram()).toEqual(true);
   });
 
-  xit('Hjelmqvist-Gryb-Zock-Pfund-Wax', function () {
+  it('Hjelmqvist-Gryb-Zock-Pfund-Wax', function () {
     var word = new Isogram('Hjelmqvist-Gryb-Zock-Pfund-Wax');
 
     expect(word.isIsogram()).toEqual(true);
   });
 
-  xit('Heizölrückstoßabdämpfung', function () {
+  it('Heizölrückstoßabdämpfung', function () {
     var word = new Isogram('Heizölrückstoßabdämpfung');
 
     expect(word.isIsogram()).toEqual(true);
   });
 
-  xit('the quick brown fox', function () {
+  it('the quick brown fox', function () {
     var word = new Isogram('the quick brown fox');
 
     expect(word.isIsogram()).toEqual(false);
   });
 
-  xit('Emily Jung Schwartzkopf', function () {
+  it('Emily Jung Schwartzkopf', function () {
     var word = new Isogram('Emily Jung Schwartzkopf');
 
     expect(word.isIsogram()).toEqual(true);
   });
 
-  xit('éléphant', function () {
+  it('éléphant', function () {
     var word = new Isogram('éléphant');
 
     expect(word.isIsogram()).toEqual(false);

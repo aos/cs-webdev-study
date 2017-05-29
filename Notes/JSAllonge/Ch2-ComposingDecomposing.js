@@ -94,7 +94,7 @@ numbers(1, 2, 3, 4, 5); // [1, 2, 3, 4, 5]
 ["foo", ...["bar", "baz"]]; // ["foo", "bar", "baz"]
 
 // Decomposing lists works the same way:
-const [first, ...rest] = ["foo", "bar"];
+var [first, ...rest] = ["foo", "bar"];
 first; // "foo"
 rest; // ["bar"]
 
@@ -380,5 +380,262 @@ mapWith((x) => x * x, OneTwoFour);
 /**
  * Mutation
 **/
+// Objects are passed by reference. If we assign a new variable to an object and mutate it, the object itself will be mutated and not a copy.
+// Destructuring on the other hand makes a copy
 
+// Making a copy of a linked list without iterating over it twice, using mutation:
+var copy = (node, head = null, tail = null) => {
+  if (node === EMPTY) {
+    return head
+  }
+  else if (tail === null) {
+    const {first, rest} = node;
+    const newNode = {first, rest};
+    return copy(rest, newNode, newNode);
+  }
+  else {
+    const {first, rest} = node;
+    const newNode = {first, rest};
+    tail.rest = newNode;
+    return copy(node.rest, head, newNode);
+  }
+}
 
+// Re-write mapWith
+const mapWithMut = (fn, node, head = null, tail = null) => {
+  if (node === EMPTY) {
+    return head;
+  }
+  else if (tail === null) {
+    const {first, rest} = node;
+    const newNode = {first: fn(first), rest};
+    return mapWith(fn, rest, newNode, newNode);
+  }
+  else {
+    const {first, rest} = node;
+    const newNode = {first: fn(first), rest};
+    tail.rest = newNode;
+    return mapWith(fn, node.rest, head, newNode);
+  }
+};
+mapWithMut((x) => 1.0 / x, oneToFive);
+//{"first":1,"rest":{"first":0.5,"rest":{"first":0.3333333333333333,"rest": {"first":0.25,"rest":{"first":0.2,"rest":{}}}}}}
+
+// Reassignment
+// `var` is only function-scoped, just like function declarations. All `var` declarations behave as if tehy were hoisted to the top of the function
+// `let` is block- and function-scoped
+// `const` is read-only, block- and function-scoped
+
+// `var`
+(() => {
+  var age = 49;
+  if (true) {
+    var age = 50;
+  }
+  return age;
+})(); // 50
+
+// `let`
+(() => {
+  let age = 49;
+  if (true) {
+    let age = 50;
+  }
+  return age;
+})(); // 49
+
+// Block-scoping errors with `var` and `for` loops
+var introductions = [],
+    names = ['Karl', 'Friedrich', 'Gauss']
+
+for (var i = 0; i < 3; i++) {
+  introductions[i] = (soAndso) => 
+    `Hello ${soAndSo}, my name is ${names[i]}`
+}
+
+// If we try:
+introductions[1]('Aos'); // 'Hello Aos, my name is undefined'
+// This occurs because the `i` is not block-scoped, and i becomes 3 at the end of the loop
+
+// This is fixed by using `let` as it is block-scoped
+
+/**
+ * Copy on Write = make a copy on setting a new value (calling `set(..)`)
+**/
+// Some utilities:
+var first = ({first, rest}) => first;
+var rest = ({first, rest}) => rest;
+const at = (index, list) =>
+  index === 0
+    ? first(list)
+    : at(index - 1, rest(list))
+
+var set = (index, value, list, originalList = list) =>
+  index === 0
+    ? (list.first = value, originalList)
+    : set(index - 1, value, rest(list), originalList)
+
+const parentList = {first: 1, rest: {first: 2, rest: {first: 3, rest: EMPTY}}}
+
+set(2, "three", parentList); // {first: 1, rest: {first: 2, rest: {first: "three", rest: EMPTY}}}
+
+// Copy-on-read
+// When the parent attemps to "read" the value of a child of the list, we make a copy and read the copy of the child
+var rest = ({first, rest}) => copy(rest);
+
+// Back to copy-on-write:
+var rest = ({first, rest}) => rest;
+var set = (index, value, list) =>
+  index === 0
+    ? {first: value, rest: list.rest}
+    : {first: list.first, rest: set(index - 1, value, list.rest)}
+
+// Functional Iterators
+// Create an array iterator using an object:
+const arrayIterator = (array) => {
+  // Using closure, we can keep track of i
+  let i = 0;
+  // Returns a function
+  return () => {
+    // `i === array.length` is evaluated first, then the value is set to done
+    const done = i === array.length;
+    // Function returns an object with the `done` property, and `value` property
+    return {
+      done,
+      value: done ? undefined : array[i++]
+    }
+  }
+}
+
+const iteratorSum = (iterator) => {
+  let eachIteration,
+      sum = 0;
+  // Running `iterator(..)` scoped 
+  while ((eachIteration = iterator(), !eachIteration.done)){
+    sum += eachIteration.value;
+  }
+  return sum;
+}
+iteratorSum(arrayIterator([1, 3, 9, 16, 25]));
+
+// Simple number iterator
+const NumberIterator = (number = 0) =>
+  () => ({done: false, value: number++});
+
+fromOne = NumberIterator(1);
+fromOne().value; // 1
+fromOne().value; // 2
+
+// Fibonacci iterator
+const FibonacciIterator = () => {
+  let previous = 0,
+      current = 1;
+  
+  return () => {
+      const value = current; 
+      [previous, current] = [current, current + previous];
+      return {done: false, value};
+  }
+}
+const fib = FibonacciIterator();
+fib().value; // 1
+fib().value; // 1
+fib().value; // 2
+fib().value; // 3
+fib().value; // 5
+
+// Mapping an iterator
+const mapIteratorWith = (fn, iterator) => 
+  () => {
+    const {done, value} = iterator();
+    return ({done, value: done ? undefined: fn(value)});
+  }
+
+const squares = mapIteratorWith((x) => x * x, NumberIterator(1));
+squares().value; // 1
+squares().value; // 4
+squares().value; // 9
+
+// Define `take` => a function which returns an iterator that only returns a fixed number of elements:
+const take = (iterator, numberToTake) => {
+  let count = 0;
+  return () => {
+    if (++count <= numberToTake) {
+      return iterator();
+    } else {
+      return {done: true};
+    }
+  };
+};
+
+// `toArray` function which takes an iterator and pushes its values into an array
+const toArray = (iterator) => {
+  let eachIteration,
+      array = [];
+  while ((eachIteration = iterator(), !eachIteration.done)) {
+    array.push(eachIteration.value);
+  }
+  return array;
+}
+toArray(take(FibonacciIterator(), 5)); // [1, 1, 2, 3, 5]
+to
+toArray(take(squares, 5));
+// [1, 4, 9, 16, 25]
+
+// Writing a filter for iterators that accompanies mapping
+const filterIteratorWith = (fn, iterator) => 
+  () => {
+    do {
+      const {done, value} = iterator();
+    } while (!done && !fn(value));
+    return {done, value};
+  }
+
+const oddsOf = callLeft(filterIteratorWith, (n) => n % 2 === 1);
+toArray(take(squareOf(oddsOf(NumberIterator(1))), 5));
+// [1, 9, 25, 49, 81]
+
+/**
+ * Making Data Out of Functions
+**/
+
+// Building blocks of combinatory logic 
+// (K, I, V combinators)
+// Kestrel, Idiot Bird, Vireo
+
+// const K = (x) => (y) => x;
+// const I = (x) => (x);
+// const V = (x) => (y) => (z) => z(x)(y);
+
+// Kestrel (K)
+// A constant function that always returns the same thing no matter what you give it. You give it a value, and it returns a constant function that gives that value
+// Example:
+const K = (x) => (y) => x;
+const fortyTwo = K(42);
+fortyTwo(6); // 42
+fortyTwo("Hello"); // 42
+
+// Identity (I)
+// Function which evaluates to whatever parameter you pass it
+const I = (x) => (x);
+I(42); // 42
+
+// Consider:
+K(x)(y); // x
+
+// Substituting in `I`
+K(I)(x); // I
+// Then:
+K(I)(x)(y) === I(y); // which is effectively `y`
+// Therefore:
+K(I)(x)(y); // `y`
+K(I)(6)(7); // 7
+K(I)(12)(24); // 24
+
+// Given two values, K(I) always returns the second value
+K('primus')('secundus'); // 'primus'
+K(I)('primus')('secundus'); // 'secundus'
+
+var first = K,
+    second = K(I);
+// Given two values, `K` always returns the first value, and `K(I)` always returns the second value
