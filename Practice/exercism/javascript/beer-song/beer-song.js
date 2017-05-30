@@ -34,6 +34,7 @@ BeerSong.prototype.sing = function(start, end = 0) {
   let n = start;
   let string = "";
 
+  // Build song verses
   while (n > end) {
     if (n === 2) {
       string += this.two;
@@ -47,6 +48,7 @@ BeerSong.prototype.sing = function(start, end = 0) {
     string += "\n"
   }
 
+  // Add last verse
   if (n === 0) {
     string += this.zero;
     return string;
