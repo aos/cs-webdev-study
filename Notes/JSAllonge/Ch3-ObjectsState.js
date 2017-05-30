@@ -223,3 +223,47 @@ uncontextualized() === aFourthObject; // false
 contextualized() === aFourthObject; // true
 
 // Method Decorators
+// Decorators can be used to decorate methods provided that they carefull preserve the function's context
+// Consider `maybe`:
+// Decorates a function: applies function if argument passed in, otherwise returns parameter
+var maybe = (fn) => 
+  x => x != null ? fn(x) : x;
+
+var plus1 = x => x + 1;
+plus1(1); // 2
+plus1(0); // 1
+plus1(null); // 1
+plus1(undefined); // null <------ ???
+
+var maybePlus1 = maybe(plus1);
+maybePlus1(1); // 2
+maybePlus1(0); // 1
+maybePlus1(null); // null
+maybePlus1(undefined); // undefined <------ much better
+
+// Convert to a `function` expression to preserve context and use `.call(..)` to preserve `this`:
+var maybe = (fn) => 
+  function(x) {
+    return x != null ? fn.call(this, x) : x;
+  }
+
+// Let's handle variadic functions and methods, by gathering arguments and using `apply(..)`
+var maybe = (fn) =>
+  function (...args) {
+    for (const i in args) {
+      // This method is only invoked if none of the arguments are `null` or `undefined`
+      if (args[i] == null) return args[i];
+    }
+    return fn.apply(this, args);
+  }
+
+// Test it out:
+var someObject = {
+  setSize: maybe(function(size) {
+    this.size = size;
+  })
+}
+someObject.setSize(5);
+someObject; // {setSize: [Function], size: 5}
+someObject.setSize();
+someObject; // {setSize: [Function], size: 5}
