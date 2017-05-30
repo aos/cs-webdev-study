@@ -639,3 +639,69 @@ K(I)('primus')('secundus'); // 'secundus'
 var first = K,
     second = K(I);
 // Given two values, `K` always returns the first value, and `K(I)` always returns the second value
+
+// If we wanted to use `first` and `second` on a two-element array we'd need some piece of code that calls some code:
+var latin = (selector) => selector('primus')('secundus')
+latin(first); // 'primus'
+latin(second); // 'secundus'
+
+// Function that makes data:
+// arrays:
+cons = (first, second) => [first, second]
+// objects:
+cons = (first, second) => {first, second}
+
+// For 'data' we access using `K` and `K(I)`:
+(first, second) => (selector) => selector(first)(second);
+// Curried:
+(first) => (second) => (selector) => selector(first)(second)
+
+// Building the function:
+var first = K,
+    second = K(I),
+    pair = (first) => (second) => (selector) => selector(first)(second);
+
+var latin = pair('primus')('secundus');
+latin(first); // 'primus'
+latin(second); // 'secundus'
+
+// Vireo (V Combinator)
+// Changing names of `pair` function to `x`, `y`, and `z`
+// This works similarly to JS's `.apply` function:
+// Take these two values, and apply them to this function
+(x) => (y) => (z) => z(x)(y);
+
+// Another notable example is "thrush", the T combinator. Takes one value and applies it to function
+
+// Lists with functions as data:
+var first = ({first, rest}) => first,
+    rest = ({first, rest}) => rest,
+    pair = (first, rest) => ({first, rest}),
+    EMPTY1 = ({});
+
+const oneOneTwoThree = pair(1, pair(2, pair(3, EMPTY1)));
+first(oneOneTwoThree); // 1
+first(rest(oneOneTwoThree)); // 2
+first(rest(rest(oneOneTwoThree))); // 3
+
+// Writing length and mapWith over it:
+var lengthTwo = (aPair) =>
+  aPair === EMPTY1
+    ? 0
+    : 1 + lengthTwo(rest(aPair));
+
+var reverseTwo = (aPair, delayed = EMPTY) =>
+  aPair === EMPTY
+    ? delayed
+    : reverseTwo(rest(aPair), pair(first(aPair), delayed));
+
+var mapWithTwo = (fn, aPair, delayed = EMPTY) =>
+  aPair === EMPTY
+    ? reverse(delayed)
+    : mapWithTwo(fn, rest(aPair), pair(fn(first(aPair)), delayed));
+
+var doubled = mapWithTwo((x) => x * 2, oneOneTwoThree);
+first(doubled); // 2
+first(rest(doubled)); // 4
+first(rest(rest(doubled))); // 6
+
