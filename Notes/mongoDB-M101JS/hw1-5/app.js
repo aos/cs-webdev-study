@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 function errorHandler(err, req, res, next) {
   console.error(err.message);
   console.error(err.stack);
-  res.status(500).render('error_template', {error: err})
+  res.status(500).render('error', {error: err});
 }
 
 const connectToMongo = () => {
@@ -44,6 +44,7 @@ connectToMongo()
       } else {
         db.collection('movies').insertOne({"title": title, "year": year, "imdb": imdb},
         (err, r) => {
+          if (err) {console.error(err)};
           console.log("Document inserted with _id: " + r.insertedId);
           res.redirect('/');
         });
