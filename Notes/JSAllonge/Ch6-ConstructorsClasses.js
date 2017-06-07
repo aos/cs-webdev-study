@@ -218,3 +218,19 @@ var PrivatePerson = (() => {
     }
   }
 })();
+
+// Object methods within instances
+var WidgetModel = function(id, attrs) {
+  Object.assign(this, attrs || {});
+  this.id = function() {return id}; // Object method
+}
+// Set and get are instance methods
+Object.assign(WidgetModel.prototype, {
+  set: function(attr, value) {
+    this[attr] = value;
+    return this;
+  },
+  get: function(attr) {
+    return this[attr];
+  }
+})
