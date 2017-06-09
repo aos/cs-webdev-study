@@ -1,0 +1,25 @@
+{
+  "name": "timestamp-ms",
+  "version": "1.0.0",
+  "description": "timestamp microservice",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "timestamp",
+    "microservice"
+  ],
+  "author": "Aos",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "supertest": "^3.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.4.2"
+  }
+}
