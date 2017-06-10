@@ -1,0 +1,27 @@
+{
+  "name": "ad-rh-parser-ms",
+  "version": "1.0.0",
+  "description": "request header parser microservice",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "request",
+    "header",
+    "parser",
+    "microservice"
+  ],
+  "author": "Aos",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "mocha": "^3.4.2",
+    "supertest": "^3.0.0"
+  }
+}

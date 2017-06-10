@@ -1,0 +1,67 @@
+/* 
+  ==========
+  Custom Styles
+  ==========
+*/
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #FFF;
+  color: #212121;
+  font: 400 14px/20px 'Source Sans Pro', sans-serif;
+}
+
+a {
+  all: unset;
+}
+
+p {
+  margin: 0;
+}
+
+h3 {
+  font-size: 20px;
+  padding-left: 40px;
+}
+
+code {
+  margin-left: 40px;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+/*
+  ==========
+  Header
+  ==========
+*/
+
+.header {
+  background: #EFEDED;
+  padding: 30px 40px 30px 40px;
+  margin-bottom: 60px;
+  font-size: 30px;
+  text-align: left;
+}
+
+/* 
+  ==========
+  Footer
+  ==========
+*/
+
+.footer {
+  padding: 10px 40px 10px 40px;
+  margin-top: 60px;
+}
+
+.fa {
+  font-size: 20px;
+}
+
+.fa-twitter {
+  color: #4099FF;
+}
