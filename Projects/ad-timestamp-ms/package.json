@@ -1,26 +1,24 @@
 {
-  "name": "timestamp-ms",
+  "name": "ad-timestamp-ms",
   "version": "1.0.0",
-  "description": "timestamp microservice",
+  "description": "microservice timestamp",
   "main": "app.js",
   "directories": {
     "test": "test"
   },
-  "scripts": {
-    "start": "node app.js",
-    "test": "./node_modules/.bin/mocha --reporter spec"
-  },
-  "keywords": [
-    "timestamp",
-    "microservice"
-  ],
-  "author": "Aos",
-  "license": "ISC",
   "dependencies": {
     "express": "^4.15.3"
   },
   "devDependencies": {
-    "supertest": "^3.0.0",
-    "mocha": "^3.4.2"
-  }
+    "mocha": "^3.4.2",
+    "supertest": "^3.0.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "timestamp"
+  ],
+  "author": "Aos",
+  "license": "ISC"
 }
