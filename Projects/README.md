@@ -1,5 +1,5 @@
 ## Projects
-This is a place to house all mini-projects not worthy of a separate repo
+This is a place to house all mini-projects not large enough for a separate repo
 
 - [JS Calc](http://royal-control.surge.sh/) - JavaScript-based simple calculator
 - [Wikipedia Viewer](http://kind-things.surge.sh/) - Queries Wikipedia API to search articles
