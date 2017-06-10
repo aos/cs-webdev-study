@@ -13,6 +13,9 @@
     "mocha": "^3.4.2",
     "supertest": "^3.0.0"
   },
+  "engines":{
+    "node": "8.0.0",
+  },
   "scripts": {
     "test": "mocha"
   },
