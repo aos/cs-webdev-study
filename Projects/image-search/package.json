@@ -1,0 +1,23 @@
+{
+  "name": "image-search",
+  "version": "1.0.0",
+  "description": "image search abstraction layer",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "image",
+    "search"
+  ],
+  "author": "Aos",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mongodb": "^2.2.28",
+    "superagent": "^3.5.2"
+  },
+  "devDependencies": {
+    "dotenv": "^4.0.0"
+  }
+}
