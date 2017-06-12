@@ -4,6 +4,7 @@
   "description": "url shortener",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "mocha"
   },
   "keywords": [
