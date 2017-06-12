@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>URL Shortener Microservice</title>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="header">
+    <h2>URL Shortener Microservice</h2>
+  </header>
+
+  <h3>Example creation usage:</h3>
+  <p><code>https://ad-short.herokuapp.com/new/http://www.google.com</code></p>
+  <p><code>https://ad-short.herokuapp.com/new/http://cnn.com:80</code></p>
+ 
+  <h3>Example creation output:</h3>
+  <p><code>{ "original_url": "http://www.google.com", "short_url": "https://ad-short.herokuapp.com/2581" }</code></p>
+
+  <h3>Usage:</h3>
+  <p><code>https://ad-short.herokuapp.com/2581</code></p>
+
+  <h3>Will redirect to:</h3>
+  <p><code>https://www.google.com/</code></p>
+  <footer class="footer">
+    <p>Made by Aos</p>
+    <a href="https://twitter.com/onlyone_Aos"><i class="fa fa-twitter"></i></a> 
+    <a href="https://github.com/aosdab"><i class="fa fa-github"></i></a> 
+  </footer>
+
+</body>
+</html>
