@@ -1,27 +1,26 @@
 const express = require('express');
 const app = express();
 const search = require('./router/search');
-// const history = require('./router/history');
+const db = require('./db');
 const port = process.env.PORT || 3000;
 
 app.use(express.static('public'));
-
-// Middleware example
-app.use((req, res, next) => {
-  console.log('Hi from this middleware!');
-  console.log(req.ip)
-  next();
-})
+// Load DB connection as middleware
+app.use(db);
 
 app.get('/', (req, res) => {
   res.sendFile('index.html');
 })
 
-// Handle GET request from /imagesearch
+// Handle image search
 app.use('/imagesearch', search);
 
 // Handle history
-// app.use('/latest/imagesearch', history.routes);
+app.use('/latest/imagesearch', (req, res) => {
+  req.session.collection('history').find({}, {'_id': 0}).toArray((err, docs) => {
+    res.send(docs.reverse());
+  })
+})
 
 app.listen(port, () => {
   console.log('Express server listening on port %s...', port);

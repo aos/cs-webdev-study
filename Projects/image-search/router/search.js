@@ -1,10 +1,10 @@
 const routes = require('express').Router();
-// const history = require('./history');
 const request = require('superagent');
 require('dotenv').config({path: 'key.env'});
 
 routes.get('/:term', (req, res) => {
 
+  // Search term and offset
   let term = req.params.term;
   let { offset } = req.query;
 
@@ -29,16 +29,34 @@ routes.get('/:term', (req, res) => {
           }
         }
         res.send(cleanedResults)
-        return {term, when: Date.now()}
+        return {term, when: getDate()}
       },
       // Handle promise rejection
-      (failure) => {
-        console.log(failure);
+      (err) => {
+        console.log(err);
       })
-      // // Save search history to DB
-      // .then(function(res) {
-      //   history.save(res);
-      // })
+      // Save search history to DB
+      .then((result) => {
+        req.session.collection('history').insertOne({term: result.term, when: result.when})
+        .then(
+          (res) => console.log('Inserted history into DB'), 
+          (err) => console.log(err));
+      })
 })
+
+function getDate() {
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+  // Parse out date, month, year
+  let dt = new Date(Date.now())
+  let month = dt.getUTCMonth();
+  let year = dt.getUTCFullYear();
+  let date = dt.getUTCDate();
+  let time = dt.toLocaleTimeString();
+
+  // Build string date
+  let natural = `${months[month]} ${date} ${year}, ${time}`;
+  return natural;
+}
 
 module.exports = routes;
