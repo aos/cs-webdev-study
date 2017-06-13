@@ -1,0 +1,19 @@
+{
+  "name": "file-metadata-ms",
+  "version": "1.0.0",
+  "description": "file metadata",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "file"
+  ],
+  "author": "Aos",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "multer": "^1.3.0"
+  }
+}

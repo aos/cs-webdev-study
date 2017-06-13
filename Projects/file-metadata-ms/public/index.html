@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>File Metadata Microservice</title>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="header">
+    <h2>File Metadata Microservice</h2>
+  </header>
+
+  <h3>Usage:</h3>
+  <p style="margin-left: 40px;">Upload a file below to view its filesize.</p>
+
+  <form action="/get-file-size" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="submit">
+  </form>
+
+  <footer class="footer">
+    <p>Made by Aos</p>
+    <a href="https://twitter.com/onlyone_Aos"><i class="fa fa-twitter"></i></a> 
+    <a href="https://github.com/aosdab"><i class="fa fa-github"></i></a> 
+  </footer>
+</body>
+
+</html>
