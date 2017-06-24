@@ -1,4 +1,4 @@
-# Comprehensive Web Development and CS Study Path
+# Comprehensive CS and Web Development Study Path
 
 This is the location where I will be storing all my notes, small projects, and practice.
 
