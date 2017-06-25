@@ -195,3 +195,8 @@ This tree will have depth N. Each (node) function call has 2 children. Therefore
 The runtime for a recursive function making multiple calls: O(branches^depth), where branches is the number of times each recursive call branches. In this case, O(2^N).
 
 (Side note: the sum of a sequence of powers of two is roughly equal to the _next_ value in the sequence.)
+
+Big O time describes the rate of increase!  
+_Big O time describes the rate of increase!_  
+**Big O time describes the rate of increase!**   
+_**Big O time describes the rate of increase!**_   
