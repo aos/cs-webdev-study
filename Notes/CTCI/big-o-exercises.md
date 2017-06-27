@@ -1,7 +1,7 @@
 ## Big O exercises
 
 #### 1. Computes the product of `a` and `b`. What is the runtime? 
-```c
+```java
 int product(int a, int b) {
   int sum = 0;
   for (int = 0; i < b; i++) {
@@ -13,7 +13,7 @@ int product(int a, int b) {
 * O(b) => O(N)
 
 #### 2. Computes `a^b`. What is the runtime?
-```c
+```java
 int power(int a, int b) {
   if (b < 0) {
     return 0; // error
@@ -30,7 +30,7 @@ int power(int a, int b) {
 * O(b) => O(N)
 
 #### 3. Computes `a % b`. What is the runtime?
-```c
+```java
 int mod(int a, int b) {
   if (b <= 0) {
     return -1;
@@ -43,7 +43,7 @@ int mod(int a, int b) {
 * O(1)
 
 #### 4. Integer division. What is the runtime (assume `a` and `b` are both positive)?
-```c
+```java
 int div(int a, int b) {
   int count = 0;
   int sum = b;
@@ -58,7 +58,7 @@ int div(int a, int b) {
 * O(a / b)
 
 #### 5. Computes the [integer] square root of a number. If number is not a perfect square, it returns -1. Done by successive guessing. If n is 100, it first guesses 50. Too high? Try something lower - halfway between 1 and 50. What is the runtime?
-```c
+```java
 int sqrt(int n) {
   return sqrt_helper(n, 1, n);
 }
@@ -81,7 +81,7 @@ int sqrt_helper(int n, int min, int max) {
 * O(log n)
 
 #### 6. Computes the [integer] square root of a number. This is done by trying increasingly large numbers until it finds the right value, or too high. Runtime?
-```c
+```java
 int sqrt(int n) {
   for (int guess = 1; guess * guess <= n; guess++) {
     if (guess * guess == n) {
@@ -103,7 +103,7 @@ int sqrt(int n) {
 * Answer: O(n), we have to search through all the nodes
 
 #### 9. The `appendToNew` method appends a value to an array by creating a new, longer array and returning this longer array. You've used the `appendToNew` method to create a `copyArray` function that repeatedly calls `appendToNew`. How long does copying an array take?
-```c
+```java
 int[] copyArray(int[] array) {
   int[] copy = new int[0];
   for (int value : array) {
@@ -126,7 +126,7 @@ int[] appendToNew(int[] array, int value) {
 * O(n^2)
 
 #### 10. Sums the digits in a number. What is its big O time?
-```c
+```java
 int sumDigits(int n) {
   int sum = 0;
   while (n > 0) {
@@ -140,7 +140,7 @@ int sumDigits(int n) {
 * O(log n)
 
 #### 11. Prints all strings of length k where characters are in sorted order. It does this by generating all strings of length k and then checking if each is sorted. Runtime?
-```c
+```java
 int numChars = 26;
 void printSortedStrings(int remaining) {
   printSortedStrings(remaining, "");
@@ -175,7 +175,7 @@ char ithLetter(int i) {
 * O(kc^k), where k is the length of the string and c is the number of characters in the alphabet. It takes O(c^k) time to generate each string. Then we need to check that each of these is sorted, which takes O(k) time.
 
 #### 12. Computes the intersection (the number of elements in common) of two arrays. It assumes neither array has duplicates. It computes the intersection by sorting one array (array b) and then iterating through array a checking (via binary search) if each value is in b. Runtime?
-```c
+```java
 int intersection(int[] a, int[] b) {
   mergesort(b);
   int intersect = 0;

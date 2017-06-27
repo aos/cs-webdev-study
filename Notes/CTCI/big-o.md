@@ -31,7 +31,7 @@ The language and metric used to describe the efficiency of algorithms.
 Stack space in recursive calls
 -- O(n) time and O(n) space:
 
-```c
+```java
 int sum(int n) {
   if (n <= 0) {
     return 0;
@@ -52,7 +52,7 @@ Each of these calls is added to the call stack and takes up actual memory.
 #### Example 2:
 O(n) time, O(1) space
 
-```c
+```java
 int pairSumSequence(int n) {
   int sum = 0;
   for (int i = 0; i < n; i++) {
@@ -72,7 +72,7 @@ It is possible for O(n) code to run faster than O(1) code for specific inputs. B
 For this reason, constants are dropped in runtime. An algo that might be described as O(2n) is actually O(n).
 
 #### Example 3:
-```c
+```java
 int min = Integer.MAX_VALUE;
 int max = Integer.MIN_VALUE;
 // x : array denotes 'for each'
@@ -81,7 +81,7 @@ for (int x : array) {
   if (x > max) max = x;
 }
 ```
-```c
+```java
 int min = Integer.MAX_VALUE;
 int max = Integer.MIN_VALUE;
 for (int x : array) {
@@ -107,7 +107,7 @@ Big O time describes the rate of increase!
 When to multiply runtimes vs add?
 
 #### Add the runtimes: O(A + B):
-```c
+```java
 for (int a : arrA) {
   print(a);
 }
@@ -118,7 +118,7 @@ for (int b : arrB) {
 - Do A chunks of work, then B chunks of work
 
 #### Multiply the runtimes: O(A * B):
-```c
+```java
 for (int a : arrA) {
   for (int b : arrB) {
     print(a + "," + b);
@@ -174,7 +174,7 @@ If the number of elements in the problem space gets halved each time, that will 
 ### Recursive Runtimes
 
 Consider
-```c
+```java
 int f(int n) {
   if (n <= 1) {
     return 1;
