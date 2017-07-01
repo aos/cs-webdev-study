@@ -16,7 +16,7 @@ My curriculum will be very similar to [this path](https://github.com/P1xt/p1xt-g
 - [x]  Book: [You Don't Know JS: ES6 & Beyond](https://github.com/getify/You-Dont-Know-JS/blob/master/es6%20&%20beyond/README.md#you-dont-know-js-es6--beyond)     
 - [x]  Course: [Learn to Code Advanced HTML & CSS](http://learn.shayhowe.com/advanced-html-css/)  
 - [x]  Project: Portfolio from the frontend section of FCC -- _plan on revisiting_
-- [x]  Article: Read [Project Specification Documents](http://www.pixelearth.net/pages/project-specification) and get in the habit of including every bit of information it details that makes sense for a project in the README.md or other supporting documentation for your projects 
+- [x]  Article: Read [Project Specification Documents](http://www.pixelearth.net/pages/project-specification)
 - [ ]  Course: [Effective Thinking Through Mathematics](https://www.edx.org/course/effective-thinking-through-mathematics-utaustinx-ut-9-01x) 
 - [ ]  Book: [Setting Up ES6](https://leanpub.com/setting-up-es6/read)    
 - [x]  Book: [JavaScript Allongé, the "Six" Edition](https://leanpub.com/javascriptallongesix)  
@@ -30,8 +30,8 @@ My curriculum will be very similar to [this path](https://github.com/P1xt/p1xt-g
 - [ ]  Book:  [DOM Enlightenment](http://domenlightenment.com/)    
 - [ ]  Project:  Simon Game from the frontend section of FCC    
 - [ ]  Project:  Complete all Classic Puzzles - Easy on [CodinGame](https://www.codingame.com/) in JavaScript        
-- [ ]  Course:  [MongoDB for Node.js Developers](https://university.mongodb.com/courses/M101JS/about)
-- [ ]  The FCC Backend Certification - all projects, ignore the tutorials and just read the official docs if you want. 
+- [ ]  Course:  [MongoDB for Node.js Developers](https://university.mongodb.com/courses/M101JS/about) **[In Progress]**
+- [ ]  The FCC Backend Certification - all projects **[In Progress]**
 - [ ]  Course: [Calculus One](https://www.coursera.org/learn/calculus1)    
 - [ ]  Book:  [JavaScript Design Patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/)
 - [ ]  Project: Clone [this](https://blackrockdigital.github.io/startbootstrap-creative/) landing page  
@@ -99,3 +99,7 @@ My curriculum will be very similar to [this path](https://github.com/P1xt/p1xt-g
 - [ ]  Project: Create an npm module that bootstraps a fullstack application, with Node.js on the backend, and the SPA library/framework of your choice on the frontend. Include a full test suite and comprehensive build processes. Publish it to NPM.
 - [ ]  Project: Complete all problems from all rounds of the [Google Code Jam 2016](https://code.google.com/codejam/contests.html) - scroll down to the appropriate section
 - [ ]  Project: Extend your CSS grid framework to include the CSS and JavaScript required to implement 5 to 10 material design components
+
+#### Side projects
+- [x]  Slack bot
+- [ ]  Full-stack (MEVN) flash cards app **[In Progress]**
