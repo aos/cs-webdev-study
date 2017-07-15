@@ -76,3 +76,23 @@ copyArray.copyWithin(1, 3, 5); // [1, 4, 5, 4, 5, 6]
 
 // Sorting:
 
+// sort() -- lexographic comparison, can be passed in a callback function that needs to return either '1' (correct order), or '-1' (incorrect order, switch)
+
+// Consider:
+let friends = [
+  {name: 'John', age: 30},
+  {name: 'Ana', age: 20},
+  {name: 'Chris', age: 25}
+];
+
+function comparePerson(a, b) {
+  if (a.age < b.age) {
+    return -1;
+  }
+  if (a.age > b.age) {
+    return 1;
+  }
+  return 0;
+}
+
+friends.sort(comparePerson);
