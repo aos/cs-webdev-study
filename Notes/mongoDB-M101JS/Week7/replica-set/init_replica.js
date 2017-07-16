@@ -10,5 +10,7 @@ config = { _id: "m101", members:[
 rs.initiate(config);
 rs.status();
 
+// To be able to query from a secondary set, run command while in replica set mongo shell:
+rs.slaveOk();
 
-
+// Secondaries are constantly reading the opLog of the primary
