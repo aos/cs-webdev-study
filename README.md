@@ -30,7 +30,7 @@ My curriculum will be very similar to [this path](https://github.com/P1xt/p1xt-g
 - [ ]  Book:  [DOM Enlightenment](http://domenlightenment.com/)    
 - [ ]  Project:  Simon Game from the frontend section of FCC    
 - [ ]  Project:  Complete all Classic Puzzles - Easy on [CodinGame](https://www.codingame.com/) in JavaScript        
-- [ ]  Course:  [MongoDB for Node.js Developers](https://university.mongodb.com/courses/M101JS/about) **[In Progress]**
+- [x]  Course:  [MongoDB for Node.js Developers](https://university.mongodb.com/courses/M101JS/about)
 - [ ]  The FCC Backend Certification - all projects **[In Progress]**
 - [ ]  Course: [Calculus One](https://www.coursera.org/learn/calculus1)    
 - [ ]  Book:  [JavaScript Design Patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/)
