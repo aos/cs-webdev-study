@@ -18,7 +18,7 @@ My curriculum will be very similar to [this path](https://github.com/P1xt/p1xt-g
 - [x]  Project: Portfolio from the frontend section of FCC -- _plan on revisiting_
 - [x]  Article: Read [Project Specification Documents](http://www.pixelearth.net/pages/project-specification)
 - [ ]  Course: [Effective Thinking Through Mathematics](https://www.edx.org/course/effective-thinking-through-mathematics-utaustinx-ut-9-01x) 
-- [ ]  Book: [Setting Up ES6](https://leanpub.com/setting-up-es6/read)    
+- [x]  Book: [Setting Up ES6](https://leanpub.com/setting-up-es6/read)    
 - [x]  Book: [JavaScript Allongé, the "Six" Edition](https://leanpub.com/javascriptallongesix)  
 - [ ]  Course: [Getting Sassy with Sass](http://www.sassshop.com/#/)
 - [ ]  Project: Build an online Towers of Hanoi solver that accepts a tower height between 5 and 10,  and then displays a graphical (animated) solution, iteratively moving each piece until the puzzle is solved
@@ -102,4 +102,4 @@ My curriculum will be very similar to [this path](https://github.com/P1xt/p1xt-g
 
 #### Side projects
 - [x]  Slack bot
-- [ ]  Full-stack (MEVN) flash cards app **[In Progress]**
+- [x]  Full-stack (MEVN) flash cards app 
