@@ -77,6 +77,8 @@ copyArray.copyWithin(1, 3, 5); // [1, 4, 5, 4, 5, 6]
 // Sorting:
 
 // sort() -- lexographic comparison, can be passed in a callback function that needs to return either '1' (correct order), or '-1' (incorrect order, switch)
+// If 'a' < 'b' sort 'a' to an index lower than 'b'
+// If 'a' > 'b' sort 'b' to an index lower than 'a'
 
 // Consider:
 let friends = [
@@ -96,3 +98,18 @@ function comparePerson(a, b) {
 }
 
 friends.sort(comparePerson);
+
+// Typed Arrays
+
+let myArray = new Int8Array(length); // Creates an 8-bit twos complement signed integer
+let myOtherArray = new Uint8Array(length); // Creates an 8-bit unsigned integer
+
+// ex:
+let length = 5; 
+let int16 = new Int16Array(length);
+
+for (let i = 0; i < length; i++) {
+    int16[i] = i + 1;
+}
+
+console.log(int16);
