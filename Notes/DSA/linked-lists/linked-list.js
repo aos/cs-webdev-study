@@ -1,6 +1,6 @@
 // Linked list implementation
 
-function LinkedList() {
+module.exports = function LinkedList() {
     const Node = function(element) {
         this.element = element;
         this.next = null;
@@ -91,9 +91,14 @@ function LinkedList() {
         }
     };
 
+    this.remove = function(element) {
+        let index = this.indexOf(element);
+        return this.removeAt(index);
+    };
+
     this.indexOf = function(element) {
         let current = head,
-            index = -1;
+            index = 0;
 
         while (current) {
             if (element === current.element) {
@@ -235,7 +240,4 @@ function DoublyLinkedList() {
         }
     }
 };
-
-// Circular linked lists
-
 
