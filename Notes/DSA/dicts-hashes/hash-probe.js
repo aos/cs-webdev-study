@@ -84,4 +84,4 @@ function HashTable() {
         }
         return undefined;
     };
-}
+};
