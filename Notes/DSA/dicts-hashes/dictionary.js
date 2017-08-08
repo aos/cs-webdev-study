@@ -2,7 +2,7 @@
 //
 // Stores [key, value] collection of elements
 
-function Dictionary() {
+module.exports = function Dictionary() {
     let items = {};
 
     this.set = function(key, value) {
@@ -18,7 +18,7 @@ function Dictionary() {
     };
 
     this.has = function(key) {
-        return Object.hasOwnProperty(key);
+        return items.hasOwnProperty(key);
     };
 
     this.get = function(key) {
