@@ -21,10 +21,11 @@ me.addEdge('B', 'F');
 me.addEdge('E', 'I');
 
 let fromVertex = myVertices[0];
-let shortestPathA = me.BFS(fromVertex);
+//let shortestPathA = me.BFS(fromVertex);
 
 // Build path from vertex to other vertices
 
+/*
 for (let i = 1;i < myVertices.length; i++) {
   let toVertex = myVertices[i],
       path = new Stack(); 
@@ -39,3 +40,6 @@ for (let i = 1;i < myVertices.length; i++) {
   }
   console.log(s);
 }
+*/
+
+console.log(me.DFS());

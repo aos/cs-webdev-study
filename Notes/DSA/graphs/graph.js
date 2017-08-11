@@ -23,6 +23,8 @@ module.exports = function Graph() {
     console.log('discovered ' + u);
 
     color[u] = 'gray';
+    
+    // Track a vertex's discovery time
     d[u] = ++time;
 
     if (callback) {
@@ -33,11 +35,17 @@ module.exports = function Graph() {
     for (let i = 0; i < neighbors.length; i++) {
       let w = neighbors[i];
       if (color[w] === 'white') {
+
+        // Keep track of predecessors
         p[w] = u;
-        dfsVisit(w, color, callback);
+
+        DFSVisit(w, color, d, f, p, callback);
       }
     }
+
     color[u] = 'black';
+
+    // Track a vertex's finish time (when fully explored)
     f[u] = ++time;
     console.log('explored ' + u);
   }
@@ -52,7 +60,7 @@ module.exports = function Graph() {
   // Receives two vertices as parameters
   this.addEdge = function(v, w) {
     adjList.get(v).push(w);
-    adjList.get(w).push(v);
+    // adjList.get(w).push(v); Commented out for toposort
   };
 
   this.toString = function() {
@@ -102,7 +110,7 @@ module.exports = function Graph() {
           // Add one to the distance
           d[w] = d[u] + 1;
           // Mark its predecessor
-          pred[w] = u
+          pred[w] = u;
 
           queue.enqueue(w);
         }
@@ -133,7 +141,7 @@ module.exports = function Graph() {
           f     = {}, // Finish time
           p     = {}; // Predecessors
 
-    let time = 0;
+    time = 0;
 
     // Initialize objects
     for (let i = 0; i < vertices.length; i++) {
@@ -147,6 +155,7 @@ module.exports = function Graph() {
         DFSVisit(vertices[i], color, d, f, p, callback);
       }
     }
+
     return {
       discovery    : d,
       finished     : f,
