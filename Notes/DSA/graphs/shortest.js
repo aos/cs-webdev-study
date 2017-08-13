@@ -73,6 +73,42 @@ function shortestPath(graph) {
     }
     return dist;
   }
+
+  // Minimum spanning tree
+  // (Bridging all vertices together with least total cost, where edges represent cost)
+
+  // Finds the subset of edges that forms a tree that includes every vertex, where the total weight of all the edges in the tree is minimized
+  this.prim = function() {
+    const parent  = [],
+          key     = [],
+          visited = [];
+    
+    let length = this.graph.length;
+
+    for (let i = 0; i < length; i++) {
+      key[i] = INF;
+      visited[i] = false
+    }
+
+    key[0] = 0;
+    parent[0] = -1;
+
+    for (let i = 0; i < length - 1; i++) {
+      let u = minDistance(key, visited);
+      visited[u] = true;
+
+      for (let v = 0; v < length; v++) {
+        if (this.graph[u][v] &&
+            visited[v] == false &&
+          this.graph[u][v] < key[v]) {
+
+          parent[v] = u;
+          key[v] - this.graph[u][v];
+        }
+      }
+    }
+    return parent;
+  }
 }
 
 if (require.main === module) {
