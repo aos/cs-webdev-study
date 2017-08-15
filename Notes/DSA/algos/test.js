@@ -38,3 +38,8 @@ console.log(array.toString());
 array = createNonSortedArray(10);
 array.mergeSort();
 console.log(array.toString());
+
+// Quick sort
+array = createNonSortedArray(15);
+array.quickSort();
+console.log(array.toString());

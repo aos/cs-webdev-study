@@ -62,6 +62,7 @@ module.exports = function ArrayList() {
         j--;
       }
     }
+
     return i;
   };
 
