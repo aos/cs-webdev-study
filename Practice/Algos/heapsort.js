@@ -45,7 +45,7 @@ const heapSort = (array) => {
   while (heapSize > 1) {
     heapSize--;
 
-    [array[0], array[heapSize - 1]] = [array[heapSize - 1], array[0]];
+    [array[0], array[heapSize]] = [array[heapSize], array[0]];
     heapify(array, heapSize, 0);
   }
 }
