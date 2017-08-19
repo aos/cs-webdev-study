@@ -6,7 +6,7 @@
 */
 
 function partition(array, start, end) {
-  let pivot = array[Math.floor((start + end) / 2)];
+  let pivot = array[end];
 
   // Pivot index
   let pIndex = start;
@@ -20,7 +20,7 @@ function partition(array, start, end) {
   }
   // Swap elements at partition index and pivot index
   // (As the only remaining elements are > than pivot)
-  [array[pIndex], pivot] = [pivot, array[pIndex]];
+  [array[pIndex], array[end]] = [array[end], array[pIndex]];
 
   return pIndex;
 }

@@ -67,18 +67,16 @@ module.exports = function ArrayList() {
   };
 
   const quick = (array, left, right) => {
-    let index;
-
     if (array.length > 1) {
 
-      index = partition(array, left, right);
+      let pIndex = partition(array, left, right);
 
-      if (left < index - 1) {
-        quick(array, left, index - 1);
+      if (left < pIndex - 1) {
+        quick(array, left, pIndex - 1);
       }
 
-      if (index < right) {
-        quick(array, index, right);
+      if (right > pIndex) {
+        quick(array, pIndex, right);
       }
     }
   };
@@ -165,5 +163,8 @@ module.exports = function ArrayList() {
   this.quickSort = function() {
     quick(array, 0, array.length - 1);
   };
+
+  // Heap sort
+   
 }
 

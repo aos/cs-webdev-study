@@ -43,3 +43,5 @@ console.log(array.toString());
 array = createNonSortedArray(15);
 array.quickSort();
 console.log(array.toString());
+
+// Heap sort
