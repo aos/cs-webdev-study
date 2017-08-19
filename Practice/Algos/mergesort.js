@@ -5,12 +5,12 @@ function merge(left, right) {
 
   while (li < left.length && ri < right.length) {
 
-    if (left[li] < right[ri]) {
+    if (left[li] <= right[ri]) {
       result.push(left[li]);
       li++;
     }
 
-    if (right[ri] < left[li]) {
+    if (right[ri] <= left[li]) {
       result.push(right[ri]);
       ri++;
     }
@@ -31,7 +31,7 @@ function merge(left, right) {
 
 function mergeSortRec(array) {
 
-  if (array.length == 1) {
+  if (array.length === 1) {
     return array;
   }
 
@@ -43,11 +43,9 @@ function mergeSortRec(array) {
 }
 
 function mergeSort(array) {
-  array = mergeSortRec(array);
+  return mergeSortRec(array);
 }
 
 let arr = [9, 0, 2, 3, 4, 5, 1, 37, 3];
 
-//mergeSort(arr);
-
-console.log(arr);
+console.log(mergeSort(arr));
