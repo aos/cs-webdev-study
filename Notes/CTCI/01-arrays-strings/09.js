@@ -9,6 +9,16 @@
  * 'waterbottle' is a rotation of 'erbottlewat'
 */
 
+const isSubstring = (s1, s2) => {
+  return (s1.indexOf(s2) > -1);
+}
+
 const rotation = (s1, s2) => {
-  
+  const full = s2 + s2;    
+
+  return isSubstring(full, s1);
+}
+
+if (require.main === module) {
+  console.log(rotation(process.argv[2], process.argv[3]));
 }
