@@ -20,7 +20,6 @@ module.exports = function LinkedList() {
       while (current.next) {
         current = current.next;
       }
-
       current.next = node;
     }
     length++;
@@ -32,6 +31,7 @@ module.exports = function LinkedList() {
     // Remove head
     if (head.data === data) {
       head = head.next;
+      length--;
       return head;
     }
 
@@ -41,6 +41,7 @@ module.exports = function LinkedList() {
       if (current.next.data === data) {
 
         current.next = current.next.next;
+        length--;
         return true;
       }
       current = current.next;
@@ -57,5 +58,10 @@ module.exports = function LinkedList() {
       current = current.next;
     }
     return console.log(list);
+  }
+
+  this.size = function() {
+    console.log("Size:", length);
+    return length;
   }
 }
