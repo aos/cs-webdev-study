@@ -14,9 +14,35 @@
  * Output: 3->1->2->10->5->5->8
  */
 
-const partition = (node, p) => {
-  let head = node,
-      tail = node;
+const partition = (head, p) => {
+  let current = head.next,
+    previous = head,
+
+  if (head === null) return;
+
+  while (current !== null) {
+
+    if (current.data < p) {
+      // Skip over current
+      previous.next = current.next;
+      current.next = head;
+      head = current;
+
+      current = previous.next;
+    } else {
+      previous = current;
+      current = current.next;
+    }
+  }
+
+  // Head changes so head must be returned
+  return head;
+}
+
+/* Solution 2: Incrementing head and tail */
+const partition2 = (node, p) => {
+  let node = head,
+      tail = head;
 
   while (node !== null) {
     let next = node.next;
