@@ -21,7 +21,7 @@ const deleteMidNode = (node) => {
   return true;
 }
 
-const LinkedList = require('./list');
+const { LinkedList } = require('./list');
 const myList = new LinkedList();
 
 let list = myList.appendToTail(2);

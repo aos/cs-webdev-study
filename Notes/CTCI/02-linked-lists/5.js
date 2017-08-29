@@ -15,7 +15,7 @@
  * Output: 9 -> 1 -> 2. 912
 */
 
-const LinkedList = require('./list');
+const { LinkedList } = require('./list');
 
 const sumLists = (l1, l2) => {
   const MyList = new LinkedList();

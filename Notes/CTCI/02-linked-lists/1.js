@@ -6,7 +6,7 @@
  * How would you solve this problem if a temporary buffer is not allowed?
 */
 
-const LinkedList = require('./list');
+const {LinkedList} = require('./list');
 
 const removeDups = (list) => {
   // Using temporary buffer

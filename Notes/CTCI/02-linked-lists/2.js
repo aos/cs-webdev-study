@@ -64,7 +64,7 @@ const nthToLast = (head, k) => {
   return p2.data;
 }
 
-const LinkedList = require('./list');
+const { LinkedList } = require('./list');
 
 const newList = new LinkedList();
 const myList = newList.appendToTail(5);

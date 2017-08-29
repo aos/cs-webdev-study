@@ -1,4 +1,4 @@
-module.exports = function LinkedList() {
+function LinkedList() {
   const Node = function(data) {
     this.data = data;
     this.next = null;
@@ -64,4 +64,14 @@ module.exports = function LinkedList() {
     console.log("Size:", length);
     return length;
   }
+}
+
+function LinkedListNode(data) {
+  this.data = data;
+  this.next = null;
+}
+
+module.exports = {
+  LinkedList : LinkedList,
+  LinkedListNode : LinkedListNode
 }

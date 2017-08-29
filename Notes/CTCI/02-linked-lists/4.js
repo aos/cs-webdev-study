@@ -64,7 +64,7 @@ const partition2 = (node, p) => {
   return head;
 }
 
-const LinkedList = require('./list');
+const { LinkedList } = require('./list');
 const MyList = new LinkedList();
 const newList = MyList.appendToTail(3);
 MyList.appendToTail(5);

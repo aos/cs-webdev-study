@@ -27,10 +27,20 @@ const palTwo = (list) => {
   let p1 = list;
   let p2 = list.next;
 
-  while (p1 !== null) {
+  // Get list length
+  while (p1 != null) {
+    p1 = p1.next;
+    counter++;
+  }
+
+  // Reset first pointer
+  p1 = list;
+
+  while (p1 !== null && counter > 0) {
   let counter2 = 0;
 
-    while (p2.next !== null && counter <= counter2) {
+    // Run second pointer to comparison node (other side) 
+    while (p2.next !== null && counter2 < counter) {
       p2 = p2.next;
       counter2++;
     }
@@ -47,16 +57,65 @@ const palTwo = (list) => {
   return true;
 }
 
-const LinkedList = require('./list');
-const MyList = new LinkedList();
+// Iterative approach: Fast and slow runner using a stack
+const palThree = (list) => {
+  let fast = list;
+  let slow = list;
 
+  const stack = [];
+
+  /* Push elements from first half of linked list onto stack. 
+  When fast runner (which is moving at 2x speed) reaches end
+  of linked list, then we know we're at the middle */
+  while (fast !== null && fast.next !== null) {
+    stack.push(slow.data);
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+
+  // Has odd # of elements, so skip middle
+  if (fast !== null) {
+    slow = slow.next;
+  }
+
+  while (slow !== null) {
+    let top = stack.pop();
+
+    // If values are different -- not a palindrome
+    if (top !== slow.data) {
+      return false;
+    }
+    slow = slow.next;
+  }
+  return true;
+}
+
+const { LinkedList, LinkedListNode } = require('./list');
+const AnotherList = new LinkedList();
+
+// Reverse a linked list:
+const reverse = (node) => {
+  let head = null;
+
+  while (node !== null) {
+    let n = new LinkedListNode(node.data);
+    n.next = head;
+    head = n;
+    node = node.next;
+  }
+  return head;
+}
+
+const MyList = new LinkedList();
 let newList = MyList.appendToTail('r');
 MyList.appendToTail('a');
+MyList.appendToTail('c');
+MyList.appendToTail('e');
 MyList.appendToTail('t');
-MyList.appendToTail('d');
-MyList.appendToTail('t');
-MyList.appendToTail('a');
-MyList.appendToTail('r');
+MyList.appendToTail('u');
+MyList.appendToTail('n');
 
 MyList.print();
 console.log(isPal(newList));
+console.log(palTwo(newList));
+console.log(reverse(newList));
