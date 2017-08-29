@@ -16,7 +16,7 @@
 
 const partition = (head, p) => {
   let current = head.next,
-    previous = head,
+    previous = head;
 
   if (head === null) return;
 
