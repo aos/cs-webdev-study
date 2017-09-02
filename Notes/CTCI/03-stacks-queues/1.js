@@ -18,9 +18,48 @@
  * where 'n' is number of stacks.
 */
 
-function MultiStackOffset(numStacks) {
-  const mainArray = Array(numStacks);
+function FixedMultiStack() {
+  const numStacks = 3;
+  const stackCapacity = 3;
+  const stacks = Array(numStacks).fill(0); // Stack pointer
+  const values = Array(numStacks * stackCapacity);
 
-  
+  function getTop(stackNum) {
+    return ((stackNum * stackCapacity) + stacks[stackNum]);
+  }
+
+  function isFull(stackNum) {
+    return stacks[stackNum] === (stackCapacity - 1);
+  }
+
+  this.push = function (stackNum, value) {
+    // Check if full
+    if (isFull(stackNum)) {
+      return false;
+    } 
+    // Use stack number and stack pointer as offset into values array
+    const offset = getTop(stackNum); 
+
+    values[offset] = value;
+    // Update stack pointer
+    stacks[stackNum]++;
+    return true;
+  }
+
+  this.pop = function (stackNum) {
+    const offset = getTop(stackNum); 
+    const temp = values[offset]
+    values[offset] = 0;
+    stacks[stackNum]--;
+    return temp;
+  }
+
+  this.peek = function (stackNum) {
+    const offset = getTop(stackNum); 
+    return values[offset];
+  }
+
+  this.isEmpty = function (stackNum) {
+    return sizes[stackNum] === 0;
+  }
 }
-stackOffset(1, 2, 3);
