@@ -27,7 +27,6 @@ function LinkedList() {
   }
 
   this.deleteNode = function(data) {
-  
     // Remove head
     if (head.data === data) {
       head = head.next;

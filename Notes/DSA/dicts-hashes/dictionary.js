@@ -1,5 +1,5 @@
 // Dictionary data structure (aka map)
-//
+
 // Stores [key, value] collection of elements
 
 module.exports = function Dictionary() {

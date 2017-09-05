@@ -37,6 +37,9 @@ function MinStack() {
   }
 
   this.pop = function (value) {
+    if (stack.length === 0) {
+      return false;
+    }
     return stack.pop().value;
   }
 
@@ -57,3 +60,9 @@ console.log(Stack.min()); // Should be '1'
 
 Stack.pop();
 console.log(Stack.min()); // Now '2'
+
+Stack.pop();
+Stack.pop();
+Stack.pop();
+
+console.log(Stack.min()); // Now '3'
