@@ -18,20 +18,20 @@
 function SetOfStacks() {
   const capacity = 5,
         stacks = [[]];
-  let stackPointer = 0,
-      pointed = false;
+  let stackPointer = 0;
+      // pointed = false;
 
   this.push = function(value) {
     
     // Popping at specific substack changes capacity
     // Run through stacks and find non-full stack
-    if (pointed) {
-      let newPoint = 0;
-      while (stacks[newPoint].length === capacity) {
-        newPoint++;
-      }
-      stackPointer = newPoint;
-    }
+    // if (pointed) {
+    //   let newPoint = 0;
+    //   while (stacks[newPoint].length === capacity) {
+    //     newPoint++;
+    //   }
+    //   stackPointer = newPoint;
+    // }
 
     if (stacks[stackPointer].length < capacity) {
       stacks[stackPointer].push(value);
@@ -50,6 +50,8 @@ function SetOfStacks() {
   }
 
   this.pop = function() {
+    if (stacks[stackPointer].length === 0) return null;
+
     const val = stacks[stackPointer].pop();
 
     // Last element of stack? Go back to previous stack
@@ -66,7 +68,7 @@ function SetOfStacks() {
 
   // Given a specific sub-stack
   this.popAt = function(index) {
-    pointed = true;
+    // pointed = true;
     const val = stacks[index].pop();
 
     return val;
