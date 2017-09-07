@@ -1,0 +1,21 @@
+1. Alley wishes to ~find~ the Rama Nujan stone
+2. Genie gives her 9 identical stones to which she has to find the real stone
+3. One of the 9 stones weighs slightly more than the others
+4. Alley inadvertently wishes for 2 balance scales, that can only be used once
+5. Is it possible to find the real stone given only 2 1-shot scales?
+
+-- Solution:
+Divide the 9 stones into groups of 3. Take 2 groups (chosen randomly) and
+weigh them against each other. Two scenarios are likely to happen:
+1. One group of stones weighs more than the other
+  - In this case, the group that weighs more will contain the Rama Nujan.
+  - Take this group of stones, pick two stones from the group, and
+    weigh them against each other.
+      - If the two stones weigh the same, the remaining stone is the Rama Nujan.
+      - If one stone is heavier, that stone is the Rama Nujan.
+
+2. Both groups weigh the same
+  - In this case, take the group that was not weighed and pick two stones
+    from the group, and weigh them against each other.
+      - If the two stones weigh the same, remaining stone is Rama Nujan.
+      - If one stone is heavier, that stone is the Rama Nujan.
