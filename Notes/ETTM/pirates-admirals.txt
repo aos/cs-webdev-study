@@ -1,0 +1,14 @@
+# Pirates and Admirals
+
+3 Pirates and 3 Admirals need to cross a river.
+
+Single boat
+Only 2 people at a time
+One person required to row the boat
+
+Pirates cannot outnumber admirals on either side of the river
+
+Get everyone across!
+
+Note: Everyone in the boat is considered to be on the same side
+of the river that the boat is on.
