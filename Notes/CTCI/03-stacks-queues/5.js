@@ -11,4 +11,5 @@ const Stack = require('./stack');
 function sortStack(stack) {
   const tempStack = new Stack();
   
+  
 }
