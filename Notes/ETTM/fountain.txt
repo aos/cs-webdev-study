@@ -1,0 +1,22 @@
+The fountain of knowledge
+
+A dude came up on an oasis.
+
+Sold the juice in 8 oz servings. Each cost is 3.50.
+
+Only had 6 oz and 10 oz glass.
+
+Is it possible to use the 6 oz glass and 10 oz glass
+to produce exactly 8 oz in the 10 oz glass.
+
+Given a 6 oz and 10 oz glass, is it possible to produce exactly 8 oz?
+
+10 | 6
+-------
+10 | 0
+4  | 6
+4  | 0
+0  | 4
+10 | 4
+8  | 6
+8  | 0 <--- Solution

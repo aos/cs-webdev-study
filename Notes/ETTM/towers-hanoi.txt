@@ -3,3 +3,11 @@
 Three stacks, one full of discs.
 - Only one disc can be moved at a time
 - Only move a smaller disc on top of a bigger disc
+
+Tips:
+- Keep track of state
+- Break down the problem into a single step first
+- Notice that the placement of the first disk determines where
+the future stack will be located
+  - If even: opposite location of first disc
+  - If odd: same location as first disc
