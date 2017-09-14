@@ -11,7 +11,7 @@ module.exports = function ArrayList() {
         ir = 0;
 
     while (il < left.length && ir < right.length) {
-      if (left[il] < right[ir]) {
+      if (left[il] <= right[ir]) {
         result.push(left[il++]);
       }
       else {
