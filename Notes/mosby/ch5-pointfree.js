@@ -6,6 +6,8 @@
 const compose = (f, g) => (x) => f(g(x));
 const toLower = (x) => x.toLowerCase();
 const toUpper = (x) => x.toUpperCase();
+const shout = (x) => x + '!';
+const rev = (x) => x.reduce((acc, c) => [c].concat(acc), []);
 const replace = (search, what) => (x) => x.replace(search, what);
 const split = (at) => (x) => x.split(at);
 const join = (at) => (x) => x.join(at);
@@ -30,3 +32,9 @@ console.log(initials('pepe le peu'));
 var initPoint = compose(join('. '), compose(map(compose(toUpper, head)), split(' ')));
 console.log(initPoint('david foster wallace'));
 
+/* Example 3 */
+var angry = compose(toUpper, shout);
+console.log(angry('hello'));
+
+var latin = compose(map(angry), rev);
+console.log(latin(['frog', 'eyes']));
