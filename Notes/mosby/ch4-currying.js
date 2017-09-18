@@ -1,6 +1,6 @@
 /* Currying
  * 
- * Callying a function with fewer arguments than it expects.
+ * Calling a function with fewer arguments than it expects.
  * It returns a function that takes the remaining arguments.
 */
 
@@ -18,6 +18,9 @@ const addTen = add(10);
 increment(2); // 3
 addTen(2); // 12
 
+add(1)(3);
+add(1, 3)
+
 const curry = require('lodash').curry;
 
 const match = curry((what, str) => str.match(what))
@@ -28,24 +31,24 @@ const filter = curry((f, ary) => ary.filter(f));
 
 const map = curry((f, ary) => ary.map(f));
 
-console.log(match(/\s+/g, 'hello world'));
-console.log(match(/\s+/g)('hello world'));
+// console.log(match(/\s+/g, 'hello world'));
+// console.log(match(/\s+/g)('hello world'));
 
 const hasSpaces = match(/\s+/g);
 // function(x) { return x.match(/\s+/g) }
-console.log(hasSpaces('hello world'));
+// console.log(hasSpaces('hello world'));
 
-console.log(filter(hasSpaces, ['tori_spelling', 'tori amos']));
+// console.log(filter(hasSpaces, ['tori_spelling', 'tori amos']));
 
 const findSpaces = filter(hasSpaces);
 // function(ary) {return ary.filter(function(x) { return x.match(/\s+/g) })}
-console.log(findSpaces(['tori_spelling', 'tori amos']));
+// console.log(findSpaces(['tori_spelling', 'tori amos']));
 
 const noVowels = replace(/[aeiouy]/ig);
 // function(replacement, str) { return str.replace(/[aeiouy]/ig, replacement) }
 
 const censored = noVowels("*");
-console.log(censored('Chocolate Rain'));
+// console.log(censored('Chocolate Rain'));
 
 /* 
  * More than a pun
