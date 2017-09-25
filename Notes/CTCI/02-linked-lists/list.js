@@ -29,9 +29,10 @@ function LinkedList() {
   this.deleteNode = function(data) {
     // Remove head
     if (head.data === data) {
+      const result = head;
       head = head.next;
       length--;
-      return head;
+      return result;
     }
 
     let current = head;
@@ -62,6 +63,18 @@ function LinkedList() {
   this.size = function() {
     console.log("Size:", length);
     return length;
+  }
+
+  this.peek = function() {
+    return head;
+  }
+
+  // Removes and returns head node
+  this.poll = function() {
+    const result = head;
+    head = head.next;
+    length--;
+    return result;
   }
 }
 
