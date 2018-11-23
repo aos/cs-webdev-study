@@ -33,3 +33,18 @@ def create_list(arr):
         curr = curr.next
 
     return head
+
+
+def pick_node(head, n):
+    curr = head
+    count = 0
+
+    while curr:
+        count += 1
+
+        if count == n:
+            return curr
+
+        curr = curr.next
+
+    return None
