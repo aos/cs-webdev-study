@@ -22,6 +22,22 @@ class Node:
 
         return self.data == other.data
 
+    def __lt__(self, other):
+        o = other.data if isinstance(other, Node) else other
+        return self.data < o
+
+    def __gt__(self, other):
+        o = other.data if isinstance(other, Node) else other
+        return self.data > o
+
+    def __le__(self, other):
+        o = other.data if isinstance(other, Node) else other
+        return self.data <= o
+
+    def __ge__(self, other):
+        o = other.data if isinstance(other, Node) else other
+        return self.data >= o
+
 
 def create_list(arr):
     head = Node(arr.pop(0))
