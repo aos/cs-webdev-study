@@ -1,3 +1,6 @@
+import copy
+
+
 class Node:
     """
     A node in a linked list
@@ -64,3 +67,17 @@ def pick_node(head, n):
         curr = curr.next
 
     return None
+
+
+def reverse(head):
+    curr = copy.copy(head)
+    head.next = None
+    new_head = head
+
+    while curr.next:
+        temp = copy.copy(curr.next)
+        temp.next = new_head
+        new_head = temp
+        curr = curr.next
+
+    return new_head
