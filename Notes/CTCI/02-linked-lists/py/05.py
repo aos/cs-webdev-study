@@ -102,9 +102,9 @@ def sum_fwd(first, second):
 
         tot.append(sums)
 
-    while len(fs) > 0:
+    while len(ss) > 0:
         s_num = ss.pop()
-        sums = f_num + carry
+        sums = s_num + carry
         if sums >= 10:
             carry = 1
             sums = sums % 10
@@ -127,44 +127,25 @@ def sum_fwd(first, second):
 
 
 def sum_recursive(first, second, carry=0):
-    if not first and not second:
-        return Node(carry) if carry else None
+    if not first and not second and carry == 0:
+        return None
 
-    if first and not second:
-        sums = first.data + carry
-        if sums >= 10:
-            carry = 1
-            sums = sums % 10
-            node = Node(sums)
-            if first.next:
-                node.next = sum_recursive(first.next, second, carry)
-                return node
-            return node
-        else:
-            return Node(sums)
+    sums = carry
 
-    if second and not first:
-        sums = second.data + carry
-        if sums >= 10:
-            carry = 1
-            sums = sums % 10
-            node = Node(sums)
-            if second.next:
-                node.next = sum_recursive(first, second.next, carry)
-                return node
-            return node
-        else:
-            return Node(sums)
+    if first:
+        sums += first.data
 
-    sums = first.data + second.data + carry
-    if sums >= 10:
-        carry = 1
-        sums = sums % 10
-    else:
-        carry = 0
+    if second:
+        sums += second.data
 
-    node = Node(sums)
-    node.next = sum_recursive(first.next, second.next, carry)
+    node = Node(sums % 10)
+
+    if (first or second):
+        more = sum_recursive(first.next if first else None,
+                             second.next if second else None,
+                             1 if sums >= 10 else 0)
+        node.next = more
+
     return node
 
 
@@ -173,6 +154,10 @@ inp_two = create_list([5, 9, 2, 9])
 res = sum_lists(inp_one, inp_two)
 res_two = sum_fwd(create_list([6, 1, 7]), create_list([2, 9, 5]))
 res_rec = sum_recursive(inp_one, inp_two)
-print(res)
-print(res_rec)
-print(res_two)
+res_ans = create_list([2, 1, 9, 9])
+res_two_ans = create_list([9, 1, 2])
+
+assert(res == res_ans)
+assert(res == res_rec)
+assert(res_two == res_two_ans)
+print('All tests passed!')
