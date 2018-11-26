@@ -81,3 +81,14 @@ def reverse(head):
         curr = curr.next
 
     return new_head
+
+
+def prepend(lst, head):
+    curr = lst
+
+    while curr.next:
+        curr = curr.next
+
+    curr.next = head
+
+    return lst
