@@ -92,3 +92,22 @@ def prepend(lst, head):
     curr.next = head
 
     return lst
+
+
+def append(n, target, lst):
+    count = 0
+
+    # Get the last node of the list
+    while target.next:
+        target = target.next
+
+    # Move through a given list and append the target list
+    # 'n' count into the list
+    curr = lst
+    while count < n:
+        curr = curr.next
+        count += 1
+
+    target.next = curr
+
+    return lst
