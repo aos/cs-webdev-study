@@ -9,7 +9,6 @@ from lst import Node, create_list, pick_node
 def detect_loop(head):
     slow = head
     fast = head
-    p2 = None
 
     while slow and fast:
         slow = slow.next
@@ -17,18 +16,18 @@ def detect_loop(head):
 
         # We detected a loop since the fast pointer and slow pointer have met
         if slow.data == fast.data:
-            p2 = slow
+            slow = head
             break
 
-    # Assign a pointer at meeting point. Move head pointer and this pointer
+    # Keep slow at meeting point. Move fast pointer and slow pointer
     # at the same speed until they meet. This is the start of the loop
-    while p2:
-        if head.data == p2.data:
-            p2.next = None  # Guard against infinite loop when returning
-            return p2
+    while slow:
+        if slow.data == fast.data:
+            slow.next = None  # Guard against infinite loop when returning
+            return slow
 
-        head = head.next
-        p2 = p2.next
+        slow = slow.next
+        fast = fast.next
 
     # No loop as slow has fallen off and we never assigned p2
     return False
